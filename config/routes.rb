@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
+  root to: "homes#top"
+  get 'homes/about'
+  resources :items, only: [:index, :show]
+  resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
+  resources :addresses, only: [:create, :index, :edit, :update, :destroy]
+  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+  resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
+
   namespace :admin do
-    get 'homes/top'
+    root to: "homes#top"
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:create, :index, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show, :update]
+    resources :order_deteils, only: [:update]
   end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
