@@ -30,11 +30,11 @@ class Public::SessionsController < Devise::SessionsController
       if @customer.valid_password?(params[:customer][:password])
         ## 【処理内容3】
         if @customer = Customer.find_by(email: params[:customer][:email]) && !@customer.valid_password?(params[:customer][:password])
+          redirect_to new_customer_registration_path
+        else
           def after_sign_in_path_for(resource)
             root_path
           end
-        else
-          redirect_to new_customer_registration_path
         end
       end
     end
