@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <h4 class="m-4 px-4 bg-light">ジャンル一覧・追加</h4>
+  </div>
+  <div class="row">
+    <%= form_with model: @genre do |f| %>
+      <%= f.label "ジャンル名" %>
+      <%= f.text_field :name, placeholder: "ジャンル名" %>
+      <%= f.submit "新規登録" %>
+    <% end %>
+  </div>
+</div>
