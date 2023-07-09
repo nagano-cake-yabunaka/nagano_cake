@@ -9,7 +9,7 @@
       <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
         名前
       </strong>
-      <div class="col-sm-8 d-flex">
+      <div class="col-sm-8 d-md-flex">
         <p class="pr-4 text-nowrap">（姓）　<%= f.text_field :last_name, autofocus: true, placeholder: "令和" %></p>
         <p class="text-nowrap">（名）　<%= f.text_field :first_name, placeholder: "道子" %></p>
       </div>
@@ -19,7 +19,7 @@
       <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
         フリガナ
       </strong>
-      <div class="col-sm-8 d-flex">
+      <div class="col-sm-8 d-md-flex">
         <p class="pr-4 text-nowrap">（セイ）<%= f.text_field :last_name_kana, placeholder: "レイワ" %></p>
         <p class="text-nowrap">（メイ）<%= f.text_field :first_name_kana, placeholder: "ミチコ" %></p>
       </div>
@@ -82,8 +82,8 @@
   </div>
 
   <div class="row">
-    <p class="ml-5 text-nowrap">
-      <%= link_to new_customer_session_path do %>こちら<% end %>からログインしてください。
+    <p class="ml-md-5 pl-md-5 pl-4 text-nowrap">
+      <%= link_to "こちら", new_customer_session_path %>からログインしてください。
     </p>
   </div>
 </div>
