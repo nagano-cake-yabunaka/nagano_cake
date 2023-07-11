@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <h4 class="m-4 px-4 bg-light">商品新規登録</h4>
+  </div>
+
+  <%= form_with model: @item, url: new_admin_item_path do |f| %>
+    <div class="row">
+      <div class="col-sm-3 col-md-2 col-lg-2 text-nowrap">
+        商品画像
+      </div>
+      <div class="col-sm-8">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+    </div>
+  <% end %>
+</div>
