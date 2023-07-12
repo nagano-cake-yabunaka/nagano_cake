@@ -10,6 +10,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.all
+    @item.genre_id = Genre.find(params[:genre_id])
   end
 
   def show
