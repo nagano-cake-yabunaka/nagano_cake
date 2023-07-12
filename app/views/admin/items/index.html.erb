@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <h4 class="m-4 px-4 bg-light">商品一覧</h4>
+    <div class="d-flex-none">
+    <%= link_to new_admin_item_path do %>
+      <i class="fas fa-plus-square text-secondary"></i>
+    <% end %>
+  </div>
   </div>
 
   <div class="row mt-4">
@@ -19,8 +24,9 @@
           <tr>
             <td><%= item.id %></td>
             <td><%= item.name %></td>
-            <td><%= item.price %></td>
-            <td><%= item.genre_id %></td>
+            <td><%= item.price.to_s(:delimited) %></td>
+            <td><%= item.genre.name %></td>
+            <td><%= item_status_name(item) %></td>
           </tr>
         <% end %>
       </tbody>

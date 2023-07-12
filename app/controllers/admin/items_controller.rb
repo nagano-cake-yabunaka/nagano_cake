@@ -11,7 +11,6 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @item.genre_id = Genre.find(params[:genre_id])
   end
 
   def show
@@ -25,6 +24,6 @@ class Admin::ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:genre_id, :name, :image, :introduction, :price, :is_active)
+      params.require(:item).permit(:name, :image, :introduction, :price, :genre_id, :is_active)
     end
 end
