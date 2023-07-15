@@ -1,1 +1,20 @@
-items#index
+<div class="container">
+  <div class="row d-flex align-items-end my-4">
+    <h4>商品一覧</h4>
+    <h6>（全<%= @items.count %>件）</h6>
+  </div>
+
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-3 px-2">
+        <%= image_tag item.get_image, class: "col-12 img-responsive px-0 img" %>
+        <p class="mt-3 mb-2 px-2"><%= item.name %></p>
+        <p class="mb-2 px-2">¥<%= (item.price * 1.1).floor.to_s(:delimited) %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row justify-content-center my-5">
+    <%= paginate @items %>
+  </div>
+</div>

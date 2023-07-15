@@ -13,13 +13,15 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root to: "public/homes#top"
-  get 'homes/about'
-  resources :items, only: [:index, :show]
-  resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
-  resources :addresses, only: [:create, :index, :edit, :update, :destroy]
-  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-  resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
+  scope module: 'public' do
+    root to: "homes#top"
+    get 'homes/about'
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
+    resources :addresses, only: [:create, :index, :edit, :update, :destroy]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
+  end
 
   namespace :admin do
     root to: "homes#top"

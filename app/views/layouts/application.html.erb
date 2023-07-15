@@ -18,6 +18,11 @@
           <a class="navbar-brand p-3" href="/">
             <h2>ながのCAKE</h2>
           </a>
+
+          <% if customer_signed_in? %>
+            <p>ようこそ、<%= current_customer.last_name %>さん！</p>
+          <% end %>
+
           <div class="gnav">
             <div class="row">
               <ul class="navbar-nav navbar-expand ml-auto py-2">
