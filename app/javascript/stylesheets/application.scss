@@ -3,3 +3,9 @@
 .gnav {
   flex-direction: column;
 }
+
+.img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  padding: 0;
+}
