@@ -71,33 +71,33 @@
                 <% end %>
               </ul>
             </div>
-            <% if admin_signed_in? %>
-              <%= form_with url: admin_items_path, method: :get do |f| %>
-                <div class="row d-flex my-2 bg-light col-lg-9 ml-md-auto ml-1">
-                  <div class="col-11 m-0 p-0">
-                    <%= f.text_field :name, placeholder: "Search", class: "flex-grow-1 form-control bg-light border-light" %>
-                  </div>
-                  <div class="col-1 m-0 p-0">
-                    <%= button_tag type: "submit", class: "btn btn-default" do %>
-                      <i class="fa fa-search fa-rotate-90 text-info"></i>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            <% else %>
-              <%= form_with url: items_path, method: :get do |f| %>
-                <div class="row d-flex my-2 bg-light col-lg-9 ml-md-auto ml-1">
-                  <div class="col-11 m-0 p-0">
-                    <%= f.text_field :name, placeholder: "Search", class: "flex-grow-1 form-control bg-light border-light" %>
-                  </div>
-                  <div class="col-1 m-0 p-0">
-                    <%= button_tag type: "submit", class: "btn btn-default" do %>
-                      <i class="fa fa-search fa-rotate-90 text-info"></i>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
+            <!--<% if admin_signed_in? %>-->
+            <!--  <%= form_with url: admin_items_path, method: :get do |f| %>-->
+            <!--    <div class="row d-flex my-2 bg-light col-lg-9 ml-md-auto ml-1">-->
+            <!--      <div class="col-11 m-0 p-0">-->
+            <!--        <%= f.text_field :name, placeholder: "Search", class: "flex-grow-1 form-control bg-light border-light" %>-->
+            <!--      </div>-->
+            <!--      <div class="col-1 m-0 p-0">-->
+            <!--        <%= button_tag type: "submit", class: "btn btn-default" do %>-->
+            <!--          <i class="fa fa-search fa-rotate-90 text-info"></i>-->
+            <!--        <% end %>-->
+            <!--      </div>-->
+            <!--    </div>-->
+            <!--  <% end %>-->
+            <!--<% else %>-->
+            <!--  <%= form_with url: items_path, method: :get do |f| %>-->
+            <!--    <div class="row d-flex my-2 bg-light col-lg-9 ml-md-auto ml-1">-->
+            <!--      <div class="col-11 m-0 p-0">-->
+            <!--        <%= f.text_field :name, placeholder: "Search", class: "flex-grow-1 form-control bg-light border-light" %>-->
+            <!--      </div>-->
+            <!--      <div class="col-1 m-0 p-0">-->
+            <!--        <%= button_tag type: "submit", class: "btn btn-default" do %>-->
+            <!--          <i class="fa fa-search fa-rotate-90 text-info"></i>-->
+            <!--        <% end %>-->
+            <!--      </div>-->
+            <!--    </div>-->
+            <!--  <% end %>-->
+            <!--<% end %>-->
           </div>
         </div>
       </nav>
