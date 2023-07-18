@@ -21,6 +21,13 @@
                     <div class="row mt-5 d-flex align-items-end ml-3">
                         <h4 class="m-0">¥<%= (@item.price * 1.1).floor.to_s(:delimited) %></h4>
                         <p class="small m-0">（税込）</p>
+                        <%= form_with model: @item do |f| %>
+                            <% if @item.is_active == true %>
+                                <strong class="text-success my-0 ml-3"><%= item_status_name(@item) %></strong>
+                            <% else %>
+                                <strong class="text-secondary my-0 ml-3"><%= item_status_name(@item) %></strong>
+                            <% end %>
+                        <% end %>
                     </div>
                 </div>
             </div>

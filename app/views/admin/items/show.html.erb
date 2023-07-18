@@ -47,7 +47,11 @@
         </div>
         <div class="col-md-7 pl-0">
           <%= form_with model: @item do |f| %>
-              <%= item_status_name(@item) %>
+              <% if @item.is_active == true %>
+                <strong class="text-success"><%= admin_item_status_name(@item) %></strong>
+               <% else %>
+                <strong class="text-secondary"><%= admin_item_status_name(@item) %></strong>
+              <% end %>
           <% end %>
         </div>
       </div>

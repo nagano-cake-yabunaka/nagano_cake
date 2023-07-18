@@ -30,7 +30,13 @@
             </td>
             <td><%= item.price.to_s(:delimited) %></td>
             <td><%= item.genre.name %></td>
-            <td><%= item_status_name(item) %></td>
+            <td>
+              <% if item.is_active == true %>
+                <strong class="text-success"><%= admin_item_status_name(item) %></strong>
+              <% else %>
+                <strong class="text-secondary"><%= admin_item_status_name(item) %></strong>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
