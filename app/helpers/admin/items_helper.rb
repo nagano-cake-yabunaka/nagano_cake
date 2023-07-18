@@ -1,5 +1,5 @@
 module Admin::ItemsHelper
-  def item_status_name(item)
+  def admin_item_status_name(item)
     if item.is_active
       '販売中'
     else
