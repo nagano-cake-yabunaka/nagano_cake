@@ -1,1 +1,16 @@
-show
+<div class="container">
+    <div class="row">
+        <h4 class="m-4 px-4 bg-light">
+            <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
+        </h4>
+    </div>
+
+    <div class="customer m-4">
+        <div class="row">
+            <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+                会員ID
+            </p>
+            <p class="col-sm-8"><%= @customer.id %></p>
+        </div>
+    </div>
+</div>
