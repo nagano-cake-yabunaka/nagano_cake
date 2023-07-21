@@ -1,1 +1,71 @@
-show
+<div class="container">
+    <div class="row">
+        <h4 class="m-4 px-4 bg-light">
+            <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
+        </h4>
+    </div>
+
+    <div class="customer m-4">
+        <div class="row">
+            <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+                会員ID
+            </p>
+            <p class="col-sm-8"><%= @customer.id %></p>
+        </div>
+        <div class="row">
+            <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+                氏名
+            </p>
+            <p class="col-sm-8"><%= @customer.last_name %>　<%= @customer.first_name %></p>
+        </div>
+        <div class="row">
+            <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+                フリガナ
+            </p>
+            <p class="col-sm-8"><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></p>
+        </div>
+        <div class="row">
+            <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+                郵便番号
+            </p>
+            <p class="col-sm-8"><%= @customer.postal_code %></p>
+        </div>
+        <div class="row">
+            <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+                住所
+            </p>
+            <p class="col-sm-8"><%= @customer.address %></p>
+        </div>
+        <div class="row">
+            <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+                電話番号
+            </p>
+            <p class="col-sm-8"><%= @customer.telephone_number %></p>
+        </div>
+        <div class="row">
+            <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+                メールアドレス
+            </p>
+            <p class="col-sm-8"><%= @customer.email %></p>
+        </div>
+        <div class="row">
+            <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+                会員ステータス
+            </p>
+            <p class="col-sm-8">
+                <% if @customer.is_deleted == true %>
+                    <strong class="text-secondary"><%= customer_status_name(@customer) %></strong>
+                <% else %>
+                    <strong class="text-success"><%= customer_status_name(@customer) %></strong>
+                <% end %>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-3 col-lg-2 text-nowrap"></div>
+            <div class="col-sm-8">
+                <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success px-3 py-1" %>
+                <%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-primary px-3 py-1 ml-5" %>
+            </div>
+        </div>
+    </div>
+</div>
