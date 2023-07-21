@@ -1,81 +1,88 @@
 <div class="container">
-    <div class="row">
-        <h4 class="m-4 px-4 bg-light">
-            <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
-        </h4>
-    </div>
-    
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
-    <div class="row small">
-      <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
-        名前
-      </strong>
-      <div class="col-sm-8 d-md-flex">
-        <p class="pr-4 text-nowrap">（姓）　<%= f.text_field :last_name, autofocus: true, placeholder: "令和" %></p>
-        <p class="text-nowrap">（名）　<%= f.text_field :first_name, placeholder: "道子" %></p>
+  <div class="row">
+      <h4 class="m-4 px-4 bg-light">
+          <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
+      </h4>
+  </div>
+
+  <div class="m-4">
+    <%= form_with model: @customer, url: admin_customer_path(@customer.id) do |f| %>
+      <div class="row">
+        <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+          会員ID
+        </p>
+        <div class="col-sm-8 d-md-flex">
+          <p class="col-sm-8"><%= @customer.id %></p>
+        </div>
       </div>
-    </div>
-
-    <div class="row small">
-      <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
-        フリガナ
-      </strong>
-      <div class="col-sm-8 d-md-flex">
-        <p class="pr-4 text-nowrap">（セイ）<%= f.text_field :last_name_kana, placeholder: "レイワ" %></p>
-        <p class="text-nowrap">（メイ）<%= f.text_field :first_name_kana, placeholder: "ミチコ" %></p>
+      <div class="row">
+        <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+          氏名
+        </p>
+        <div class="col-sm-8 d-md-flex">
+          <p class="pr-4 text-nowrap"><%= f.text_field :last_name, autofocus: true, placeholder: "令和" %></p>
+          <p class="text-nowrap"><%= f.text_field :first_name, placeholder: "道子" %></p>
+        </div>
       </div>
-    </div>
 
-    <div class="row small">
-      <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
-        メールアドレス
-      </strong>
-      <p class="col-sm-8">　　　　<%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com" %></p>
-    </div>
+      <div class="row">
+        <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+          フリガナ
+        </p>
+        <div class="col-sm-8 d-md-flex">
+          <p class="pr-4 text-nowrap"><%= f.text_field :last_name_kana, placeholder: "レイワ" %></p>
+          <p class="text-nowrap"><%= f.text_field :first_name_kana, placeholder: "ミチコ" %></p>
+        </div>
+      </div>
 
-    <div class="row small">
-      <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
-        郵便番号(ハイフンなし)
-      </strong>
-      <p class="col-sm-8">　　　　<%= f.text_field :postal_code, placeholder: "00000000" %></p>
-    </div>
+      <div class="row">
+        <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+          郵便番号
+        </p>
+        <p class="col-sm-8"><%= f.text_field :postal_code, placeholder: "00000000" %></p>
+      </div>
 
-    <div class="row small">
-      <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
-        住所
-      </strong>
-      <p class="col-sm-8 text-nowrap">　　　　<%= f.text_field :address, class: "col-sm-8 px-1", placeholder: "東京都渋谷区代々木神園町0-0" %></p>
-    </div>
+      <div class="row">
+        <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+          住所
+        </p>
+        <p class="col-sm-8 text-nowrap"><%= f.text_field :address, class: "col-sm-8 px-1", placeholder: "東京都渋谷区代々木神園町0-0" %></p>
+      </div>
 
-    <div class="row small">
-      <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
-        電話番号(ハイフンなし)
-      </strong>
-      <p class="col-sm-8">　　　　<%= f.text_field :telephone_number, placeholder: "0000000000" %></p>
-    </div>
+      <div class="row">
+        <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+          電話番号
+        </p>
+        <p class="col-sm-8"><%= f.text_field :telephone_number, placeholder: "0000000000" %></p>
+      </div>
 
-    <div class="row small">
-      <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
-        パスワード
-        <% if @minimum_password_length %>
-          <em style="font-style:normal;">(<%= @minimum_password_length %>文字以上)</em>
-        <% end %>
-      </strong>
-      <p class="col-sm-8">　　　　<%= f.password_field :password, autocomplete: "new-password" %></p>
-    </div>
+      <div class="row">
+        <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+          メールアドレス
+        </p>
+        <p class="col-sm-8"><%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com" %></p>
+      </div>
 
-    <div class="row small">
-      <strong class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
-        パスワード(確認用)
-      </strong>
-      <p class="col-sm-8">　　　　<%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
-    </div>
+      <div class="row">
+        <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap">
+          会員ステータス
+        </p>
+        <div class="col-sm-8 d-flex">
+          <div>
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :is_deleted_false, "有効", class: "border-bottom mr-4" %>
+          </div>
+          <div>
+            <%= f.radio_button :is_deleted, true %>
+            <%= f.label :is_deleted_true, "退会", class: "border-bottom" %>
+          </div>
+        </div>
+      </div>
 
-    <div class="row">
-      <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap"></p>
-      <p class="col-sm-8">　　　　<%= f.submit "新規登録", class: "actions btn btn-success font-weight-bold px-5 py-1" %></p>
-    </div>
-
-  <% end %>
+      <div class="row">
+        <p class="col-sm-4 col-md-3 col-lg-2 text-nowrap"></p>
+        <p class="col-sm-8"><%= f.submit "変更を保存", class: "actions btn btn-success font-weight-bold px-4 py-2 my-3" %></p>
+      </div>
+    <% end %>
+  </div>
 </div>
