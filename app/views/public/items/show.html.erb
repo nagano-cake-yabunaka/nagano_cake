@@ -1,7 +1,6 @@
 <div class="container">
     <div class="row my-5">
         <div class="col-3">
-
         </div>
 
         <div class="col-9">
@@ -35,10 +34,12 @@
                 <div class="col-5"></div>
                 <div class="col-7">
                     <% if @item.is_active == true %>
-                        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+                        <%= form_with model: @cart_item, url: cart_items_path do |f| %>
                             <div class="col-6"></div>
-                            <div class="col-6">
-                                <%= f.submit "カートに入れる", class: "btn btn-success font-weight-bold px-4 py-2" %>
+                            <div class="col-6 d-flex">
+                                <%= f.select :amount, *[1..5], include_blank: "個数選択" %>
+                                <%= f.hidden_field :item_id, :value => @item.id %>
+                                <%= f.submit "カートに入れる", class: "btn btn-success font-weight-bold px-3 py-1 ml-5" %>
                             </div>
                         <% end %>
                     <% end %>
