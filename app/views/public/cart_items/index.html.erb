@@ -6,34 +6,35 @@
 
   <div class="row my-4">
     <table class="table table-bordered">
-      <thead class="thead-light">
+      <thead class="thead-light text-nowrap">
         <tr>
           <th>商品名</th>
           <th>単価（税込）</th>
           <th>数量</th>
-          <th>小計</th>
+          <th>小計　　　　</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <% if current_customer.cart_items.present? %>
-          <% @cart_items.each do |cart_item| %>
-            <tr>
-              <td>
-                <%= image_tag cart_item.item.get_image, class: "img-responsive img" %>
+        <!--<% @sum = 0 %>-->
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td class="align-middle">
+                <%= image_tag cart_item.item.get_image, class: "img-responsive img col-2 mr-3" %>
                 <%= cart_item.item.name %>
-              </td>
-              <td><%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %></td>
-              <td>
-                <%= form_with model: @cart_item, url: cart_item_path do |f| %>
+            </td>
+            <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+            <td class="align-middle">
+              <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local:true do |f| %>
+                <div class="box d-flex">
                   <%= f.select :amount, *[1..5] %>
-                  <%= f.submit "変更" class: "btn btn-success" %>
-                <% end %>
-              </td>
-              <td></td>
-              <td></td>
-            </tr>
-          <% end %>
+                  <%= f.submit "変更", class: "btn btn-success ml-2" %>
+                </div>
+              <% end %>
+            </td>
+            <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %></td>
+            <td class="align-middle"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn btn-danger text-nowrap" %></td>
+          </tr>
         <% end %>
       </tbody>
     </table>
