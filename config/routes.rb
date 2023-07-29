@@ -18,10 +18,11 @@ Rails.application.routes.draw do
     get 'homes/about'
     get "customers/current_customer" => "customers#show"
     get "customers/confirm"
+    get "cart_items/destroy_all"
     resources :items, only: [:index, :show]
     resources :customers, only: [:edit, :update, :withdraw]
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
   end
 
