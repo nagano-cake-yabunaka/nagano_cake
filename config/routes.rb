@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get 'homes/about'
     get "customers/current_customer" => "customers#show"
     get "customers/confirm"
-    get "cart_items/destroy_all"
+    DELETE "cart_items/destroy_all"
     resources :items, only: [:index, :show]
     resources :customers, only: [:edit, :update, :withdraw]
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
