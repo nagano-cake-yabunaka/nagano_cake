@@ -13,7 +13,7 @@ class Public::CartItemsController < ApplicationController
       cart_item.update(amount: cart_item.amount)
       redirect_to cart_items_path
     else
-      @cart_item.save
+      cart_item.save
       redirect_to cart_items_path
     end
   end
@@ -31,7 +31,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    current_user.cart_item.destroy_all
+    CartItem.destroy_all
     redirect_to cart_items_path
   end
 

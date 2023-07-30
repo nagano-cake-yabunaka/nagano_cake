@@ -2,7 +2,7 @@
   <div class="row">
     <h4 class="m-5 px-4 bg-light">ショッピングカート</h4>
     <div class="ml-auto d-flex align-items-end">
-      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :destroy_all, "data-confirm" => "カートを空にしますか？", class: "btn btn-danger text-nowrap" %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "カートを空にしますか？", class: "btn btn-danger text-nowrap" %>
     </div>
   </div>
 
