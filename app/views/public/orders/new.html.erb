@@ -19,7 +19,42 @@
         </div>
       </div>
     </div>
-    
-    <div class=""></div>
+
+    <div class="select_address">
+      <div class="row">
+        <h5><strong>お届け先</strong></h5>
+      </div>
+      <div class="row mx-3">
+        <div class="col-12">
+          <p class="m-0"><%= f.radio_button :select_address, 0, {:checked => true} %> ご自身の住所</p>
+          <p class="ml-4"><%= current_customer.customer_address_display %></p>
+        </div>
+        <div class="col-12">
+          <p class="m-0"><%= f.radio_button :select_address, 1 %> 登録済住所から選択</p>
+          <p class="ml-4 mt-1"><%= f.select :address_id , options_from_collection_for_select(@addresses, :id, :address_display) %></p>
+        </div>
+        <div class="col-12">
+          <p class="m-0"><%= f.radio_button :select_address, 2 %> 新しいお届け先</p>
+          <table class="ml-4">
+            <tr>
+              <td>郵便番号（ハイフンなし）</td>
+              <td><%= f.text_field :postal_code, autofocus: true, placeholder: "00000000" %></td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td><%= f.text_field :address,size: "50", placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+            </tr>
+            <tr>
+              <td>宛名</td>
+              <td><%= f.text_field :name, placeholder: "令和道子" %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="submit text-center my-4">
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>
