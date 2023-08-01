@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
     end
       @cart_items = current_customer.cart_items
       @order_new = Order.new
-      render :confirm
+      render orders_confirm_path
   end
 
   def thanks
