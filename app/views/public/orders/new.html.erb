@@ -3,7 +3,7 @@
     <h4 class="m-5 px-4 bg-light">注文情報入力</h4>
   </div>
 
-  <%= form_with model: @order do |f| %>
+  <%= form_with model: @order, url: orders_confirm_path do |f| %>
     <div class="payment_method">
       <div class="row">
         <h5><strong>支払方法</strong></h5>

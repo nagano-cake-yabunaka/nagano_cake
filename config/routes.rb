@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get "customers/current_customer" => "customers#show"
     get "customers/confirm"
     delete "cart_items/destroy_all"
-    post "orders/confirm"
+    post "orders/confirm" => "orders#confirm"
     get "orders/thanks"
     resources :items, only: [:index, :show]
     resources :customers, only: [:edit, :update, :withdraw]
