@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
     @addresses = Address.all
@@ -7,7 +9,7 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     order.save
-    @cart_items = current_end_user.cart_items.all
+    @cart_items = current_customer.cart_items.all
 
     @cart_items.each do |cart_item|
       @order_details = OrderDetail.new
@@ -18,9 +20,8 @@ class Public::OrdersController < ApplicationController
       @order_details.making_status = 0
       @order_details.save!
     end
-
     CartItem.destroy_all
-    redirect_to orders_completed_path
+    redirect_to orders_thanks_path
   end
 
   def confirm
@@ -46,6 +47,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
+    
   end
 
   def show
