@@ -19,13 +19,13 @@ Rails.application.routes.draw do
     get "customers/current_customer" => "customers#show"
     get "customers/confirm"
     delete "cart_items/destroy_all"
-    post "orders/confirm"
+    post "orders/confirm" => "orders#confirm"
     get "orders/thanks"
     resources :items, only: [:index, :show]
     resources :customers, only: [:edit, :update, :withdraw]
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    resources :orders, only: [:new, :create, :thanks, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show]
   end
 
   namespace :admin do
