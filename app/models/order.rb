@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :order_details
   belongs_to :customer
 
-  enum order_status: {
+  enum status: {
     wait_payment: 0,
     confirm_payment: 1,
     making: 2,
