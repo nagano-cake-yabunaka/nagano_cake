@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <h4 class="m-5 px-4 bg-light">注文履歴一覧</h4>
+        <h4 class="mt-5 mx-5 px-4 bg-light">注文履歴一覧</h4>
     </div>
 
-    <div class="row">
+    <div class="row my-3">
         <table class="table table-bordered">
             <thead class="thead-light text-nowrap">
                 <tr>
@@ -19,7 +19,7 @@
                 <% @orders.each do |order| %>
                     <tr>
                         <td class="align-middle text-nowrap"><%= order.created_at.strftime('%Y/%m/%d') %></td>
-                        <td class="align-middle text-nowrap">
+                        <td class="align-middle text-nowrap py-0">
                             〒<%= order.postal_code %><br/>
                             <%= order.address %><br/>
                             <%= order.name %>
