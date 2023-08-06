@@ -6,7 +6,11 @@
   <table class="my-4">
     <tr>
       <th class="text-nowrap"><h5><strong>購入者</strong></h5></th>
-      <td class="text-nowrap"><h5><%= @order.customer.last_name %><%= @order.customer.first_name %></h5></td>
+      <td class="text-nowrap">
+        <%= link_to admin_path(@order.customer_id), class: "link" do %>
+          <h5><%= @order.customer.last_name %><%= @order.customer.first_name %></h5>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th class="text-nowrap"><h5><strong>注文日</strong></h5></th>
@@ -55,7 +59,7 @@
             <td><%= order_detail.amount %></td>
             <td class="text-nowrap"><%= order_detail.subtotal.to_s(:delimited) %></td>
             <td>
-              <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch, local: true, class: "d-flex" do |f| %>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch, local: true, class: "d-flex" do |f| %>
                 <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, {prompt: false}, class: "form-control form-control-sm col-6 mr-4 text-center" %>
                 <%= f.submit "更新", class: "btn btn-success py-0" %>
               <% end %>

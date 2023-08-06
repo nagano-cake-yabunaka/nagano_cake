@@ -8,13 +8,17 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(order_params)
     @order_details = @order.order_details
-    if @order.status == "入金確認"
+    if @order.status == "confirm_payment"
       @order_details.each do |order_detail|
-        order_detail.making_status = "製作待ち"
-        order_detail.save
+        order_detail.update(making_status: 1)
       end
     end
     redirect_to admin_order_path(@order.id)
+  end
+
+  def customer_show
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders.page(params[:page]).per(10)
   end
 
   private

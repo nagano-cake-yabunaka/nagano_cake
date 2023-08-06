@@ -5,16 +5,15 @@ class Admin::OrderDetailsController < ApplicationController
     @order_details = @order.order_details
     @order_detail.update(order_detail_params)
 
-    if @order_details.where(making_status: "製作中").count >= 1
-      @order.status = "製作中"
-      @order.save
+    if @order_detail.making_status == "making"
+      @order.update(status: 2)
     end
 
-    if @order.order_details.count == @order_details.where(making_status: "製作完了").count
-      @order.status = "発送準備中"
-      @order.save
+    if @order.order_details.count == @order_details.where(making_status: 3).count
+      @order.update(status: 3)
     end
-    redirect_to admin_order_path(@order_detail.order.id)
+
+    redirect_to admin_order_path(@order)
   end
 
   private
