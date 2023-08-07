@@ -13,5 +13,6 @@
 
   <div class="row justify-content-center py-4">
     <%= link_to "退会しない", customers_current_customer_path, class: "btn btn-primary px-3 py-1 m-0 mr-3" %>
+    <%= link_to "退会する", customers_withdraw_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: "btn btn-danger px-4 py-1 m-0" %>
   </div>
 </div>

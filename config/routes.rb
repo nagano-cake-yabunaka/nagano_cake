@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'homes/about'
     get "customers/current_customer" => "customers#show"
     get "customers/confirm"
+    patch "customers/withdraw" => "customers#withdraw"
     delete "cart_items/destroy_all"
     post "orders/confirm" => "orders#confirm"
     get "orders/thanks"
