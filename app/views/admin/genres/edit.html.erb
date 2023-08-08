@@ -3,6 +3,15 @@
     <h4 class="m-5 px-4 bg-light">ジャンル編集</h4>
   </div>
 
+  <% if @genre.errors.any? %>
+    <%= @genre.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div class="row">
     <%= form_with model: @genre, url: admin_genre_path do |f| %>
       <%= f.label "ジャンル名", class: "m-3 mr-4" %>

@@ -3,6 +3,15 @@
     <h4 class="m-5 px-4 bg-light">商品新規登録</h4>
   </div>
 
+  <% if @item.errors.any? %>
+    <%= @item.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_with model: @item, url: admin_items_path do |f| %>
     <div class="row m-3 d-flex justify-content-center">
       <div class="col-md-2 text-nowrap px-0">

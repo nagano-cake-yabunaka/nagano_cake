@@ -3,6 +3,15 @@
     <h4 class="m-5 px-4 bg-light">注文情報入力</h4>
   </div>
 
+  <% if @order.errors.any? %>
+    <%= @order.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_with model: @order, url: orders_confirm_path do |f| %>
     <div class="payment_method">
       <div class="row">
