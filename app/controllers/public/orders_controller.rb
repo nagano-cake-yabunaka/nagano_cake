@@ -20,6 +20,7 @@ class Public::OrdersController < ApplicationController
         @order_details.making_status = 0
         @order_details.save!
       end
+
       CartItem.destroy_all
       redirect_to orders_thanks_path
     else
