@@ -5,16 +5,22 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id = current_customer.id
-    @cart_item.item_id = cart_item_params[:item_id]
-    if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
-      cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
-      cart_item.amount += params[:cart_item][:amount].to_i
-      cart_item.update(amount: cart_item.amount)
-      redirect_to cart_items_path
+
+    if customer_signed_in?
+      @cart_item.customer_id = current_customer.id
+      @cart_item.item_id = cart_item_params[:item_id]
+      if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
+        cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+        cart_item.amount += params[:cart_item][:amount].to_i
+        cart_item.update(amount: cart_item.amount)
+        redirect_to cart_items_path
+      else
+        @cart_item.save
+        redirect_to cart_items_path
+      end
     else
-      @cart_item.save
-      redirect_to cart_items_path
+      flash[:notice] = "商品のご購入には会員登録が必要です。"
+      redirect_to new_customer_registration_path
     end
   end
 
