@@ -13,7 +13,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(10).order(created_at: :desc)
+    @items = Item.page(params[:page]).per(10)
   end
 
   def show
