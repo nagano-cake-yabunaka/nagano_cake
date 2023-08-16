@@ -1,0 +1,22 @@
+@use '~bootstrap/scss/bootstrap';
+
+.gnav {
+  flex-direction: column;
+}
+
+.img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  padding: 0;
+}
+
+.link {
+  text-decoration: underline;
+  color: black;
+}
+
+.about-img {
+  width: 600px;
+  height: 300px;
+  object-fit: cover;
+}
